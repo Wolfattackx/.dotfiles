@@ -9,8 +9,11 @@ TODO make a automated setup script to install
 Screenshots
 ------------
 
+* The Home Screen & the terminal
 ![home-screen](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/ArchLabs-34-1366x768.png)
 
+* Vim
 ![vim](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/ArchLabs-31-1366x768.png)
 
+* Rofi
 ![rofi](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-10-235650_1366x768_scrot.png)
