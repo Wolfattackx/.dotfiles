@@ -13,4 +13,4 @@ Screenshots
 
 ![vim](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/ArchLabs-31-1366x768.png)
 
-![rofi] (https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-10-235650_1366x768_scrot.png)
+![rofi](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-10-235650_1366x768_scrot.png)
