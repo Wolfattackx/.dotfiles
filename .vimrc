@@ -13,6 +13,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'dikiaap/minimalist'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sts10/vim-pink-moon'
+Plugin 'kaicataldo/material.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -69,30 +71,6 @@ endif
 
 " syntax highlighting
 syntax enable
-
-if has('termguicolors') && $DISPLAY !=? '' && &t_Co == 256
-    let g:jinx_colors = 'night'   " night or day (shift-t to change on the fly)
-
-    try
-        " true colors in the terminal
-        set termguicolors
-        colorscheme jinx
-    catch
-        set nocursorline
-        set notermguicolors
-        colorscheme evening
-    endtry
-
-    " fix true colors in some terminals (neovim doesn't seem to have this issue)
-    if !has('nvim') && !($TERM =~? 'xterm' || &term =~? 'xterm')
-        let $TERM = 'xterm-256color'
-        let &term = 'xterm-256color'
-    endif
-else
-    set nocursorline
-    set notermguicolors
-    colorscheme evening
-endif
 
 " change cursor shape for different editing modes (nvim does this by default)
 if !has('nvim')
@@ -276,7 +254,19 @@ set ignorecase
 set incsearch
 set noshowmode
 set ruler
+set background=dark
 
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " Go to last file(s) if invoked without arguments.
 autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
@@ -288,13 +278,15 @@ autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.
     \ execute "source " . $HOME . "/.vim/Session.vim"
 
 " Colors & styles
-set t_Co=256
+"set t_Co=256
 "set encoding=utf-8
 set guifont=Hack
-colorscheme minimalist
+colorscheme material
+let g:material_theme_style = 'palenight'
+let g:material_terminal_italics = 1
 
 " Airline
-let g:airline_theme='minimalist'
+let g:airline_theme='material'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1

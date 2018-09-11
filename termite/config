@@ -19,25 +19,48 @@ browser = exo-open
 filter_unmatched_urls = true
 
 [colors]
-background = rgba(28,32,35,0.95)
-foreground = #E1E1E1
-foreground_bold = #E1E1E1
-cursor = #707880
+foreground          = #959DCB
+foreground_bold     = #959DCB
+cursor              = #959DCB
+cursor_foreground   = #292D3E
+background          = rgba(41, 45, 62,0.95)
 
-color0 = #1c2023
-color1 = #bf616a
-color2 = #a3be8c
-color3 = #ebcb8b
-color4 = #8fa1b3
-color5 = #b48ead
-color6 = #96b5b4
-color7 = #E1E1E1
-color8 = #1c2023
-color9 = #bf616a
-color10 = #a3be8c
-color11 = #ebcb8b
-color12 = #8fa1b3
-color13 = #b48ead
-color14 = #96b5b4
-color15 = #c0c5ce
+# 16 color space
 
+# Black, Gray, Silver, White
+color0  = #292D3E
+color8  = #676E95
+color7  = #959DCB
+color15 = #FFFFFF
+
+# Red
+color1  = #F07178
+color9  = #F07178
+
+# Green
+color2  = #C3E88D
+color10 = #C3E88D
+
+# Yellow
+color3  = #FFCB6B
+color11 = #FFCB6B
+
+# Blue
+color4  = #82AAFF
+color12 = #82AAFF
+
+# Purple
+color5  = #C792EA
+color13 = #C792EA
+
+# Teal
+color6  = #89DDFF
+color14 = #89DDFF
+
+# Extra colors
+color16 = #F78C6C
+color17 = #FF5370
+color18 = #444267
+color19 = #32374D
+color20 = #8796B0
+color21 = #959DCB
