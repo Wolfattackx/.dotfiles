@@ -10,10 +10,10 @@ Screenshots
 ------------
 
 * The Home Screen & the terminal
-![home-screen](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/ArchLabs-34-1366x768.png)
+![home-screen](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-12-012311_1366x768_scrot.png)
 
 * Vim
-![vim](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-11-191422_1366x768_scrot.png)
+![vim](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-12-011944_1366x768_scrot.png)
 
 * Rofi
 ![rofi](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-10-235650_1366x768_scrot.png)
