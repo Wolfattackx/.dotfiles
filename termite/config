@@ -7,7 +7,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = DejaVu Sans Mono 11
+font = Office Code Pro Medium 11
 scrollback_lines = 10000
 search_wrap = true
 icon_name = utilities-terminal
@@ -23,7 +23,7 @@ foreground          = #959DCB
 foreground_bold     = #959DCB
 cursor              = #959DCB
 cursor_foreground   = #292D3E
-background          = rgba(41, 45, 62,0.95)
+background          = rgba(41, 45, 62,0.84)
 
 # 16 color space
 
