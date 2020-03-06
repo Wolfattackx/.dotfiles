@@ -1,19 +1,14 @@
 #   .dotfiles
 
-My .dotfiles for i3 setup on Archlinux
+My .dotfiles for i3 setup on Ubuntu
 
-contains zsh vim rofi i3 i3blocks termite compton config files 
+contains zsh vim rofi i3 polybar termite compton ncmpcpp config files 
+
+Fonts used: Tamsyn (Terminal), Scientifica (polybar), sifi (polybar-icons)
 
 TODO make a automated setup script to install
 
 Screenshots
 ------------
+![home-screen](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/dotfile_screenshot.png)
 
-* The Home Screen & the terminal
-![home-screen](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-12-012311_1366x768_scrot.png)
-
-* Vim
-![vim](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-12-011944_1366x768_scrot.png)
-
-* Rofi
-![rofi](https://github.com/Wolfattackx/.dotfiles/blob/master/screenshots/2018-09-10-235650_1366x768_scrot.png)

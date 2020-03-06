@@ -1,0 +1,46 @@
+sw_volume: 50
+audio_device_state:1:My Pulse Output
+audio_device_state:1:my_fifo
+state: pause
+current: 1
+time: 141.447000
+random: 0
+repeat: 0
+single: 0
+consume: 1
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:mushishi-ost/Musishi All OST.mp3
+1:Silent Hill 2 Original Soundtrack/01 - Theme Of Laura.mp3
+2:Silent Hill 2 Original Soundtrack/02 - White Noiz.mp3
+3:Silent Hill 2 Original Soundtrack/03 - Forest.mp3
+4:Silent Hill 2 Original Soundtrack/04 - A World Of Madness.mp3
+5:Silent Hill 2 Original Soundtrack/05 - Ordinary Vanity.mp3
+6:Silent Hill 2 Original Soundtrack/06 - Promise (Reprise).mp3
+7:Silent Hill 2 Original Soundtrack/07 - Ashes And Ghosts.mp3
+8:Silent Hill 2 Original Soundtrack/08 - Null Moon.mp3
+9:Silent Hill 2 Original Soundtrack/09 - Heaven's Night.mp3
+10:Silent Hill 2 Original Soundtrack/10 - Alone In The Town.mp3
+11:Silent Hill 2 Original Soundtrack/11 - The Darkness That Lurks In Our Mind.mp3
+12:Silent Hill 2 Original Soundtrack/12 - Angel's Thanatos.mp3
+13:Silent Hill 2 Original Soundtrack/13 - The Day Of Night.mp3
+14:Silent Hill 2 Original Soundtrack/14 - Block Mind.mp3
+15:Silent Hill 2 Original Soundtrack/15 - Magdalene.mp3
+16:Silent Hill 2 Original Soundtrack/16 - Fermata In Mistic Air.mp3
+17:Silent Hill 2 Original Soundtrack/17 - Prisonic Fairytale.mp3
+18:Silent Hill 2 Original Soundtrack/18 - Love Psalm.mp3
+19:Silent Hill 2 Original Soundtrack/19 - Silent Heaven.mp3
+20:Silent Hill 2 Original Soundtrack/20 - Noone Love You.mp3
+21:Silent Hill 2 Original Soundtrack/21 - The Reverse Will.mp3
+22:Silent Hill 2 Original Soundtrack/22 - Laura Plays The Piano.mp3
+23:Silent Hill 2 Original Soundtrack/23 - Terror In The Depths Of Fog.mp3
+24:Silent Hill 2 Original Soundtrack/24 - True.mp3
+25:Silent Hill 2 Original Soundtrack/25 - Betrayal.mp3
+26:Silent Hill 2 Original Soundtrack/26 - Black Fairy.mp3
+27:Silent Hill 2 Original Soundtrack/27 - Theme Of Laura (Reprise).mp3
+28:Silent Hill 2 Original Soundtrack/28 - Overdose Delusion.mp3
+29:Silent Hill 2 Original Soundtrack/29 - Pianissimo Epilogue.mp3
+30:Silent Hill 2 Original Soundtrack/30 - Promise.mp3
+playlist_end
