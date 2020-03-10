@@ -149,7 +149,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Yo! Got the Exit Signal! Really Leaving?' -B 'Aight! Imma Heading Out' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -178,9 +178,14 @@ mode "resize" {
 
 #--[ EXEC ]--#
 exec --no-startup-id compton -bc --config ~/.config/compton/config
-exec feh --bg-fill /home/wolfattackx/Downloads/Wallpaper\ materials/260524.jpg # Setting up the Wallpaper
+exec feh --bg-fill ~/fav_pixelArt_wallpaper/l_dim.png # Setting up the Wallpaper
 exec_always $HOME/.config/polybar/launch.sh
-exec_always mpd
+exec mpd
+
+#--[ The Sleep settings ]
+
+exec xset s off
+exec xset -dpms
 
 #--[ Keybindings ]
 # For screenshot
@@ -192,13 +197,14 @@ exec xset fp rehash
 
 #Setting up the gaps
 #gaps [inner|outer|horizontal|vertical|top|left|bottom|right] 20px
-gaps inner 20
-gaps bottom 20
+gaps inner 10
+gaps bottom 25
 gaps top 0
 
 
 new_window pixel 2
-client.focused #D72A45 #D72A45 #D72A #D72A45
+#client.focused #D72A45 #D72A45 #D72A #D72A45
+client.focused #FFC7AC #FFC7AC #FFC7AC #FFC7AC
 client.background #D72A45 
 client.urgent           #000000 #900000 #ffffff #900000
 
