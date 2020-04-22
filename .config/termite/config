@@ -21,9 +21,9 @@ filter_unmatched_urls = true
 [colors]
 foreground = #a5a5a5
 foreground_bold = #fedfed
-#foreground_dim = #888888
-background = rgba(22, 22, 22, 0.90)
-#cursor = #dcdccc
+foreground_dim = #888888
+background = rgba(19, 19, 19, 0.97)
+cursor = #dcdccc
 
 color0 = #b3b3b3
 color1 = #802828

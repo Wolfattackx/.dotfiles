@@ -44,7 +44,7 @@ sub slurp {
 }
 
 my @entry_types;
-my $dmenu_cmd = 'dmenu -fn \'Tamsyn:pixelsize=17\' -nf \'#707880\' -sf \'#cc6666\' -nb \'#1d1f21\' -sb \'#1d1f21\' -i';
+my $dmenu_cmd = 'dme.sh';
 my $result = GetOptions(
     'dmenu=s' => \$dmenu_cmd,
     'entry-type=s' => \@entry_types,

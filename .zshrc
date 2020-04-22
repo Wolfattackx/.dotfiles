@@ -38,7 +38,7 @@ ZSH_THEME="classyTouch"
 # DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
- DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="false"
 
 # Uncomment the following line to disable auto-setting terminal title.
  DISABLE_AUTO_TITLE="true"
@@ -74,8 +74,6 @@ plugins=(
   git
   urltools
   bgnotify
-  jovial
-  osx
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -106,7 +104,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 #EXPORT BINARIES
-
 export PATH="/home/$USER/glslViewer/bin/glslViewer:$PATH"
+export PATH="/snap/bin/:$PATH"
+export PATH="/home/$USER/.local/bin/:$PATH"
+export XDG_DATA_DIRS="/var/lib/snapd/desktop/:/usr/local/share:/usr/share"
+
+(cat ~/.cache/wal/sequences &)
