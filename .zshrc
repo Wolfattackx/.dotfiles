@@ -103,6 +103,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vi='nvim'
+alias vim='nvim'
 
 #EXPORT BINARIES
 export PATH="/home/$USER/glslViewer/bin/glslViewer:$PATH"
@@ -111,3 +113,4 @@ export PATH="/home/$USER/.local/bin/:$PATH"
 export XDG_DATA_DIRS="/var/lib/snapd/desktop/:/usr/local/share:/usr/share"
 
 (cat ~/.cache/wal/sequences &)
+#(source ~/.cache/wal/colors-tty.sh &)
