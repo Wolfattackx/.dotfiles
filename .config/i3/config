@@ -92,9 +92,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking exec dunstify -r 125 "Switched to Stacked"
+bindsym $mod+w layout tabbed exec dunstify -r 125 "Switched to Tabbed"
+bindsym $mod+e layout toggle split; exec dunstify -r 125 "Switched to Tilling"
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -183,7 +183,7 @@ exec feh --bg-fill "$(cat "${HOME}/.cache/wal/wal")"
 #exec feh --bg-fill ~/fav_pixelArt_wallpaper/l_dim.png # Setting up the Wallpaper
 #exec_always wal -R
 exec_always $HOME/.config/polybar/launch.sh
-exec mpd
+exec_always mpd ~/.mpd/mpd.conf
 
 #--[ The Sleep settings ]
 
@@ -193,6 +193,9 @@ exec xset -dpms
 #--[ Keybindings ]
 # For screenshot
 bindsym --release Print exec "gnome-screenshot -i"
+
+# For Caps Lock notification
+bindsym --release Caps_Lock exec .config/custom_scripts/caps_lock.sh
 
 # For the siji font
 exec xset +fp /home/wolfattackx/.local/share/fonts
@@ -218,11 +221,11 @@ gaps top 0
 # it fails to get colors from Xresources.
 new_window pixel 2
 
-set_from_resource $fg i3wm.color9 
+set_from_resource $fg i3wm.color7 
 set_from_resource $bg i3wm.color2 
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $fg
+client.focused          $bg     $bg     $fg  $fg       $fg
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
