@@ -1,6 +1,4 @@
-if exists ('g:vscode')
-
-else
+if !exists ('g:vscode')
 
 	" Specify a directory for plugins
 	" - For Neovim: stdpath('data') . '/plugged'
@@ -30,6 +28,7 @@ else
 	set ignorecase
 	set incsearch
 	set noshowmode
+	set nowrap
 
 	if (has("nvim"))
 	  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -83,7 +82,7 @@ else
 	"let g:NERDTreeDirArrowExpandable = ''
 	let g:NERDTreeDirArrowCollapsible = ''
 
-	set nu
+	set nu relativenumber
 	set ai
 
 	"The coc of vim 
@@ -108,15 +107,6 @@ else
 	" diagnostics appear/become resolved.
 	set signcolumn=yes
 
-	" Use tab for trigger completion with characters ahead and navigate.
-	" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-	" other plugin before putting this into your config.
-	inoremap <silent><expr> <TAB>
-	      \ pumvisible() ? "\<C-n>" :
-	      \ <SID>check_back_space() ? "\<TAB>" :
-	      \ coc#refresh()
-	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 	function! s:check_back_space() abort
 	  let col = col('.') - 1
 	  return !col || getline('.')[col - 1]  =~# '\s'
@@ -125,13 +115,11 @@ else
 	" Use <c-space> to trigger completion.
 	inoremap <silent><expr> <c-space> coc#refresh()
 
-	" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-	" position. Coc only does snippet and additional edit on confirm.
-	" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+	" <tab> to confirm the selection
 	if exists('*complete_info')
-	  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+	  inoremap <expr> <TAB> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 	else
-	  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	  inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 	endif
 
 	" Use `[g` and `]g` to navigate diagnostics
@@ -173,11 +161,6 @@ else
 	  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 	augroup end
 
-	" Applying codeAction to the selected region.
-	" Example: `<leader>aap` for current paragraph
-	xmap <leader>a  <Plug>(coc-codeaction-selected)
-	nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 	" Remap keys for applying codeAction to the current line.
 	nmap <leader>ac  <Plug>(coc-codeaction)
 	" Apply AutoFix to problem on the current line.
@@ -189,12 +172,13 @@ else
 	xmap af <Plug>(coc-funcobj-a)
 	omap if <Plug>(coc-funcobj-i)
 	omap af <Plug>(coc-funcobj-a)
-
-	" Use <TAB> for selections ranges.
-	" NOTE: Requires 'textDocument/selectionRange' support from the language server.
-	" coc-tsserver, coc-python are the examples of servers that support it.
-	nmap <silent> <TAB> <Plug>(coc-range-select)
-	xmap <silent> <TAB> <Plug>(coc-range-select)
+	
+	" <C-j> and <C-k> to scroll throught the selection
+	inoremap <silent><expr> <C-j>
+	      \ pumvisible() ? "\<C-n>" :
+	      \ <SID>check_back_space() ? "\<C-j>" :
+	      \ coc#refresh()
+	inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 	" Add `:Format` command to format current buffer.
 	command! -nargs=0 Format :call CocAction('format')
@@ -228,4 +212,6 @@ else
 	" Resume latest coc list.
 	nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 	hi CocFloating ctermbg=236 guifg=#83a598
+
+else
 endif
