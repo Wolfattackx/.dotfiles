@@ -16,13 +16,18 @@ if !exists ('g:vscode')
 	Plug 'tikhomirov/vim-glsl'
 	Plug 'neoclide/coc.nvim', {'branch' : 'release'}
 	Plug 'dylanaraps/wal.vim'
+	Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
 	" Initialize plugin system
 	call plug#end()
 
 	set showcmd
 	set smartcase
+	set noswapfile
 	set nobackup
+	set undodir=~/.vim/undodir
+	set undofile
+	set colorcolumn=80
 	set autochdir
 	set autoread
 	set ignorecase
