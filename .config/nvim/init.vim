@@ -17,6 +17,9 @@ if !exists ('g:vscode')
 	Plug 'neoclide/coc.nvim', {'branch' : 'release'}
 	Plug 'dylanaraps/wal.vim'
 	Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'mattn/emmet-vim'
 
 	" Initialize plugin system
 	call plug#end()
@@ -27,8 +30,6 @@ if !exists ('g:vscode')
 	set nobackup
 	set undodir=~/.vim/undodir
 	set undofile
-	set colorcolumn=80
-	set autochdir
 	set autoread
 	set ignorecase
 	set incsearch
@@ -81,7 +82,6 @@ if !exists ('g:vscode')
 
 	" Nerdtree
 	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 	autocmd! BufNewFile,BufRead *.shader,*.hlsl set ft=hlsl
 	"let g:NERDTreeDirArrowExpandable = ''
