@@ -11,6 +11,7 @@ export ZSH="/home/wolfattackx/.oh-my-zsh"
 #ZSH_THEME="jovial"
 #ZSH_THEME="wedisagree"
 ZSH_THEME="classyTouch"
+(cat ~/.cache/wal/sequences &)
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -38,7 +39,7 @@ ZSH_THEME="classyTouch"
 # DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
-DISABLE_LS_COLORS="false"
+#DISABLE_LS_COLORS="false"
 
 # Uncomment the following line to disable auto-setting terminal title.
  DISABLE_AUTO_TITLE="true"
@@ -73,12 +74,12 @@ DISABLE_LS_COLORS="false"
 plugins=(
   git
   urltools
-  bgnotify
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -107,10 +108,24 @@ alias vi='nvim'
 alias vim='nvim'
 
 #EXPORT BINARIES
-export PATH="/home/$USER/glslViewer/bin/glslViewer:$PATH"
-export PATH="/snap/bin/:$PATH"
+#export PATH="/home/$USER/glslViewer/bin/glslViewer:$PATH"
 export PATH="/home/$USER/.local/bin/:$PATH"
-export XDG_DATA_DIRS="/var/lib/snapd/desktop/:/usr/local/share:/usr/share"
+export FZF_DEFAULT_COMMAND="find ."
+#export XDG_DATA_DIRS="/var/lib/snapd/desktop/:/usr/local/share:/usr/share"
 
-(cat ~/.cache/wal/sequences &)
+#Functions for fzf custom commands
+function edit_fzf() {
+	nvim -p $(find . | fzf --multi)
+}
+
+function cd_fzf() {
+	cd $(find -type d | fzf --preview='tree -L 3 {}')
+	zle reset-prompt
+}
+
+zle -N edit_fzf
+zle -N cd_fzf
+bindkey '^O' edit_fzf
+bindkey '^F' cd_fzf
+
 #(source ~/.cache/wal/colors-tty.sh &)
