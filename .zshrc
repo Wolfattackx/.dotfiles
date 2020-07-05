@@ -116,14 +116,20 @@ export FZF_DEFAULT_COMMAND="ag --hidden --depth 10 --ignore \"*.npm\" --ignore .
 #Functions for fzf custom commands
 function edit_fzf() {
 	temp=$(ag --hidden --depth 10 --ignore "*.npm" --ignore .git --ignore "*node_modules*" --ignore "*unity*" -f -g "" | fzf --multi --preview="cat {}")
-	nvim -p "${temp}"
+	if [[ ! -z "$temp" ]]
+	then
+		nvim -p "${temp}"
+	fi
 }
 
 function cd_fzf() {
 	cd ~
-	temp=$(find -L -maxdepth 2 -type d -not -path "*node_modules" -not -path "*.npm" -not -path "*unity*" -not -path "*.git" | fzf --preview='tree -L 3 {}')
-	cd "${temp}"
-	zle reset-prompt
+	temp=$(find -L -maxdepth 2 -type d -not -path "*node_modules" -not -path "*.npm" -not -path "*unity*" -not -path "*.git" 2> /dev/null | fzf --preview='tree -L 3 {}')
+	if [[ ! -z "$temp" ]]
+	then
+		cd "${temp}"
+		zle reset-prompt
+	fi
 }
 
 zle -N edit_fzf
