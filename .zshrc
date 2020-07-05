@@ -119,7 +119,9 @@ function edit_fzf() {
 }
 
 function cd_fzf() {
-	cd $(find -L -maxdepth 2 -type d -not -path "*node_modules" -not -path "*.npm" -not -path "*unity*" -not -path "*.git" 2> /dev/null | fzf --preview='tree -L 3 {}')
+	cd ~
+	temp=$(find -L -maxdepth 2 -type d -not -path "*node_modules" -not -path "*.npm" -not -path "*unity*" -not -path "*.git" | fzf --preview='tree -L 3 {}')
+	cd "${temp}"
 	zle reset-prompt
 }
 
