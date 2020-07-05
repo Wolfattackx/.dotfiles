@@ -110,16 +110,16 @@ alias vim='nvim'
 #EXPORT BINARIES
 #export PATH="/home/$USER/glslViewer/bin/glslViewer:$PATH"
 export PATH="/home/$USER/.local/bin/:$PATH"
-export FZF_DEFAULT_COMMAND="find ."
+export FZF_DEFAULT_COMMAND="ag --hidden --depth 10 --ignore \"*.npm\" --ignore .git --ignore \"*node_modules*\" --ignore \"*unity*\" -f -g \"\""
 #export XDG_DATA_DIRS="/var/lib/snapd/desktop/:/usr/local/share:/usr/share"
 
 #Functions for fzf custom commands
 function edit_fzf() {
-	nvim -p $(find . | fzf --multi)
+	nvim -p $(ag --hidden --depth 10 --ignore "*.npm" --ignore .git --ignore "*node_modules*" --ignore "*unity*" -f -g "" | fzf --multi)
 }
 
 function cd_fzf() {
-	cd $(find -type d | fzf --preview='tree -L 3 {}')
+	cd $(find -L -maxdepth 2 -type d -not -path "*node_modules" -not -path "*.npm" -not -path "*unity*" -not -path "*.git" 2> /dev/null | fzf --preview='tree -L 3 {}')
 	zle reset-prompt
 }
 
