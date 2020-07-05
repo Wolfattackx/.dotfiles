@@ -115,7 +115,7 @@ export FZF_DEFAULT_COMMAND="ag --hidden --depth 10 --ignore \"*.npm\" --ignore .
 
 #Functions for fzf custom commands
 function edit_fzf() {
-	nvim -p $(ag --hidden --depth 10 --ignore "*.npm" --ignore .git --ignore "*node_modules*" --ignore "*unity*" -f -g "" | fzf --multi)
+	nvim -p $(ag --hidden --depth 10 --ignore "*.npm" --ignore .git --ignore "*node_modules*" --ignore "*unity*" -f -g "" | fzf --multi --preview="cat {}")
 }
 
 function cd_fzf() {
@@ -131,3 +131,5 @@ bindkey '^O' edit_fzf
 bindkey '^F' cd_fzf
 
 #(source ~/.cache/wal/colors-tty.sh &)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
