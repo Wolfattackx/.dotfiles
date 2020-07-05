@@ -26,6 +26,7 @@ if !exists ('g:vscode')
 
 	set showcmd
 	set smartcase
+	set smartindent
 	set noswapfile
 	set nobackup
 	set undodir=~/.vim/undodir
@@ -79,6 +80,8 @@ if !exists ('g:vscode')
 	"Keybindings
 	map <C-L> :<Esc>:tabnext<CR>
 	map <C-H> :<Esc>:tabp<CR>
+	map <C-p> :<Esc>:Files<CR>
+	map <C-b> :<Esc>:Buffers<CR>
 
 	" Nerdtree
 	autocmd StdinReadPre * let s:std_in=1
