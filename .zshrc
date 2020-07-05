@@ -115,7 +115,8 @@ export FZF_DEFAULT_COMMAND="ag --hidden --depth 10 --ignore \"*.npm\" --ignore .
 
 #Functions for fzf custom commands
 function edit_fzf() {
-	nvim -p $(ag --hidden --depth 10 --ignore "*.npm" --ignore .git --ignore "*node_modules*" --ignore "*unity*" -f -g "" | fzf --multi --preview="cat {}")
+	temp=$(ag --hidden --depth 10 --ignore "*.npm" --ignore .git --ignore "*node_modules*" --ignore "*unity*" -f -g "" | fzf --multi --preview="cat {}")
+	nvim -p "${temp}"
 }
 
 function cd_fzf() {
