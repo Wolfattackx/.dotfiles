@@ -10,13 +10,13 @@ if !exists ('g:vscode')
 	Plug 'VundleVim/Vundle.vim'
 	Plug 'itchyny/lightline.vim'
 	Plug 'sheerun/vim-polyglot'
+  Plug 'prettier/vim-prettier'
 	Plug 'scrooloose/nerdtree'
 	Plug 'kaicataldo/material.vim'
 	Plug 'beyondmarc/hlsl.vim'
 	Plug 'tikhomirov/vim-glsl'
 	Plug 'neoclide/coc.nvim', {'branch' : 'release'}
 	Plug 'dylanaraps/wal.vim'
-	Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'mattn/emmet-vim'
@@ -26,7 +26,9 @@ if !exists ('g:vscode')
 
 	set showcmd
 	set smartcase
+	set autoindent
 	set smartindent
+	set expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
 	set noswapfile
 	set nobackup
 	set undodir=~/.vim/undodir
@@ -57,9 +59,7 @@ if !exists ('g:vscode')
 
 	"colorscheme material
 	colorscheme wal
-
-
-
+	
 	"Setting the line HighLighting
 	hi clear CursorLine
 	augroup CLClear
@@ -75,7 +75,6 @@ if !exists ('g:vscode')
 
 	"Lightline
 	set laststatus=2
-	let g:lightline = { 'colorscheme': 'wal' }
 
 	"Keybindings
 	map <C-L> :<Esc>:tabnext<CR>
@@ -125,9 +124,7 @@ if !exists ('g:vscode')
 
 	" <tab> to confirm the selection
 	if exists('*complete_info')
-	  inoremap <expr> <TAB> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-	else
-	  inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	  inoremap <silent> <expr> <TAB> pumvisible() ? complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>" : "\<TAB>"
 	endif
 
 	" Use `[g` and `]g` to navigate diagnostics
@@ -200,7 +197,21 @@ if !exists ('g:vscode')
 	" Add (Neo)Vim's native statusline support.
 	" NOTE: Please see `:h coc-status` for integrations with external plugins that
 	" provide custom statusline: lightline.vim, vim-airline.
-	set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+  function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+  endfunction
+
+  let g:lightline = {
+      \ 'colorscheme': 'wal',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
 
 	" Mappings using CoCList:
 	" Show all diagnostics.
