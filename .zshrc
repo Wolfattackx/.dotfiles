@@ -218,8 +218,9 @@ prompt_japh_setup () {
         prompt_japh_choose dark
     fi
     zstyle ':vcs_info:*'     actionformats " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%b%F{ye}|%F{red}%a%F{[ma}]%f-"
-    zstyle ':vcs_info:*'     formats       " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%b%F{ma}%u]%f-"
-    zstyle ':vcs_info:*'   unstagedstr   " * "
+    zstyle ':vcs_info:*'     formats       " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%b%F{ma}%u%c]%f-"
+    zstyle ':vcs_info:*'     unstagedstr   " * "
+    zstyle ':vcs_info:*'     stagedstr     " + "
     zstyle ':vcs_info:cvs:*' formats       " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%r%F{ma}]%f-"
     zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat "%b%F{red}:%F{ye}%r"
 }
@@ -286,7 +287,7 @@ prompt_japh_precmd () {
     attrib_pre_def=(
         dash              '%F{233}'
         end               '%F{178}'
-        histevent         '%F{red}'
+        histevent         '%F{white}'
         histevent-delim   '%F{white}'
         jobnum            $'%{\033[1m%}%B'
         jobnum-delim      '%F{248}'
