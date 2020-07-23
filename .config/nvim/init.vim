@@ -20,6 +20,7 @@ if !exists ('g:vscode')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'mattn/emmet-vim'
+  Plug 'cseelus/vim-colors-lucid'
 
 	" Initialize plugin system
 	call plug#end()
@@ -29,6 +30,7 @@ if !exists ('g:vscode')
 	set autoindent
 	set smartindent
 	set expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
+  syntax on
 	set noswapfile
 	set nobackup
 	set undodir=~/.vim/undodir
@@ -38,17 +40,18 @@ if !exists ('g:vscode')
 	set incsearch
 	set noshowmode
 	set nowrap
+  set list lcs=eol:¬,tab:\ \ 
 
 	if (has("nvim"))
 	  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-	 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+	 "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 	endif
 
 	"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
 	"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
 	" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
 	if (has("termguicolors"))
-		"set termguicolors
+		set termguicolors
 	endif
 
 	" Go to last file(s) if invoked without arguments.
@@ -57,8 +60,8 @@ if !exists ('g:vscode')
 	"let g:material_theme_style = 'ocean'
 	"let g:material_terminal_italics = 1
 
-	"colorscheme material
-	colorscheme wal
+	"colorscheme settings
+  colorscheme lucid
 	
 	"Setting the line HighLighting
 	hi clear CursorLine
@@ -66,12 +69,12 @@ if !exists ('g:vscode')
 	    autocmd! ColorScheme * hi clear CursorLine
 	augroup END
 
-	hi CursorLineNR cterm=bold ctermbg=15 ctermfg=8 gui=NONE guibg=#000000 guifg=#ff8000
-	augroup CLNRSet
-	    autocmd! ColorScheme * hi CursorLineNR cterm=bold ctermbg=15 ctermfg=8 gui=NONE guibg=#00000 guifg=#ff8000
-	augroup END
+	"hi CursorLineNR cterm=bold ctermbg=15 ctermfg=8 gui=NONE guibg=#000000 guifg=#ff8000
+	"augroup CLNRSet
+	    "autocmd! ColorScheme * hi CursorLineNR cterm=bold ctermbg=15 ctermfg=8 gui=NONE guibg=#00000 guifg=#ff8000
+	"augroup END
 
-	set cursorline
+	"set cursorline
 
 	"Lightline
 	set laststatus=2
@@ -90,7 +93,6 @@ if !exists ('g:vscode')
 	let g:NERDTreeDirArrowCollapsible = ''
 
 	set nu relativenumber
-	set ai
 
 	"The coc of vim 
 	" TextEdit might fail if hidden is not set.
@@ -202,7 +204,6 @@ if !exists ('g:vscode')
   endfunction
 
   let g:lightline = {
-      \ 'colorscheme': 'wal',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
@@ -230,7 +231,7 @@ if !exists ('g:vscode')
 	nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 	" Resume latest coc list.
 	nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-	hi CocFloating ctermbg=236 guifg=#83a598
+  hi CocFloating ctermbg=0 
 
 else
 endif
