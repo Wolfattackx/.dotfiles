@@ -20,7 +20,7 @@ if !exists ('g:vscode')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'mattn/emmet-vim'
-  Plug 'cseelus/vim-colors-lucid'
+  Plug 'cseelus/vim-colors-lucid', { 'as' : 'lucid' }
 
 	" Initialize plugin system
 	call plug#end()
@@ -204,10 +204,15 @@ if !exists ('g:vscode')
   endfunction
 
   let g:lightline = {
+      \ 'colorscheme': 'lucid',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ],
+			\							[ 'wolf' ]]
       \ },
+			\	'component': {
+			\		'wolf': '🦊'
+			\	},
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
       \   'currentfunction': 'CocCurrentFunction'
