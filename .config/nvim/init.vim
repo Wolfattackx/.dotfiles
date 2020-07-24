@@ -21,6 +21,7 @@ if !exists ('g:vscode')
 	Plug 'junegunn/fzf.vim'
 	Plug 'mattn/emmet-vim'
   Plug 'cseelus/vim-colors-lucid', { 'as' : 'lucid' }
+  Plug 'mhinz/vim-startify'
 
 	" Initialize plugin system
 	call plug#end()
@@ -40,6 +41,7 @@ if !exists ('g:vscode')
 	set incsearch
 	set noshowmode
 	set nowrap
+	set nu relativenumber
   set list lcs=eol:¬,tab:\ \ 
 
 	if (has("nvim"))
@@ -92,7 +94,6 @@ if !exists ('g:vscode')
 	"let g:NERDTreeDirArrowExpandable = ''
 	let g:NERDTreeDirArrowCollapsible = ''
 
-	set nu relativenumber
 
 	"The coc of vim 
 	" TextEdit might fail if hidden is not set.
@@ -211,7 +212,7 @@ if !exists ('g:vscode')
 			\							[ 'wolf' ]]
       \ },
 			\	'component': {
-			\		'wolf': '🦊'
+			\		'wolf': '🦊🥃'
 			\	},
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
@@ -237,6 +238,15 @@ if !exists ('g:vscode')
 	" Resume latest coc list.
 	nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
   hi CocFloating ctermbg=0 
+
+  " Startify Settings
+  let g:startify_session_dir = '~/.config/nvim/session'
+  let g:startify_bookmarks = [
+        \ { 'i': '~/.config/i3/config' },
+        \ { 'n': '~/.config/nvim/init.vim' },
+        \ { 'z': '~/.zshrc' }]
+  let g:startify_change_to_vcs_root = 1
+  let g:startify_session_persistence = 1
 
 else
 endif
