@@ -22,6 +22,7 @@ if !exists ('g:vscode')
 	Plug 'mattn/emmet-vim'
   Plug 'cseelus/vim-colors-lucid', { 'as' : 'lucid' }
   Plug 'mhinz/vim-startify'
+	Plug 'morhetz/gruvbox'
 
 	" Initialize plugin system
 	call plug#end()
@@ -30,7 +31,7 @@ if !exists ('g:vscode')
 	set smartcase
 	set autoindent
 	set smartindent
-	set expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
+	set tabstop=2 shiftwidth=2 smarttab softtabstop=2
   syntax on
 	set noswapfile
 	set nobackup
@@ -42,11 +43,15 @@ if !exists ('g:vscode')
 	set noshowmode
 	set nowrap
 	set nu relativenumber
-  set list lcs=eol:¬,tab:\ \ 
+  set list lcs=nbsp:.,eol:¬,tab:\ \ 
+	set clipboard=unnamedplus
 
+	highlight SpecialKey term=bold cterm=bold gui=bold
+	highlight NonText term=bold cterm=bold gui=bold
+	
 	if (has("nvim"))
 	  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-	 "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+	 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 	endif
 
 	"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
@@ -63,6 +68,8 @@ if !exists ('g:vscode')
 	"let g:material_terminal_italics = 1
 
 	"colorscheme settings
+	"let g:gruvbox_italic=1
+	"let g:gruvbox_contrast_dark='hard'
   colorscheme lucid
 	
 	"Setting the line HighLighting
@@ -115,7 +122,7 @@ if !exists ('g:vscode')
 
 	" Always show the signcolumn, otherwise it would shift the text each time
 	" diagnostics appear/become resolved.
-	set signcolumn=yes
+	"set signcolumn=yes
 
 	function! s:check_back_space() abort
 	  let col = col('.') - 1
@@ -239,12 +246,23 @@ if !exists ('g:vscode')
 	nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
   hi CocFloating ctermbg=0 
 
+	"Extra keymappings
+	nnoremap <M-j>    :resize -2<CR>
+	nnoremap <M-k>    :resize +2<CR>
+	nnoremap <M-h>    :vertical resize -2<CR>
+	nnoremap <M-l>    :vertical resize +2<CR>
+	
+	" Better tabbing
+	vnoremap < <gv
+	vnoremap > >gv
+	
   " Startify Settings
   let g:startify_session_dir = '~/.config/nvim/session'
   let g:startify_bookmarks = [
         \ { 'i': '~/.config/i3/config' },
         \ { 'n': '~/.config/nvim/init.vim' },
-        \ { 'z': '~/.zshrc' }]
+        \ { 'z': '~/.zshrc' },
+        \ { 'a': '~/.config/alacritty/alacritty.yml' }]
   let g:startify_change_to_vcs_root = 1
   let g:startify_session_persistence = 1
 
