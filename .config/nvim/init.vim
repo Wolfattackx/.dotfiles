@@ -11,7 +11,6 @@ if !exists ('g:vscode')
 	Plug 'itchyny/lightline.vim'
 	Plug 'sheerun/vim-polyglot'
   Plug 'prettier/vim-prettier'
-	Plug 'scrooloose/nerdtree'
 	Plug 'kaicataldo/material.vim'
 	Plug 'beyondmarc/hlsl.vim'
 	Plug 'tikhomirov/vim-glsl'
@@ -22,7 +21,10 @@ if !exists ('g:vscode')
 	Plug 'mattn/emmet-vim'
   Plug 'cseelus/vim-colors-lucid', { 'as' : 'lucid' }
   Plug 'mhinz/vim-startify'
+	Plug 'arcticicestudio/nord-vim'
 	Plug 'morhetz/gruvbox'
+	Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+
 
 	" Initialize plugin system
 	call plug#end()
@@ -46,9 +48,8 @@ if !exists ('g:vscode')
   set list lcs=nbsp:.,eol:¬,tab:\ \ 
 	set clipboard=unnamedplus
 
-	highlight SpecialKey term=bold cterm=bold gui=bold
-	highlight NonText term=bold cterm=bold gui=bold
-	
+	let g:vim_jsx_pretty_highlight_close_tag=1
+
 	if (has("nvim"))
 	  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
 	 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -68,22 +69,22 @@ if !exists ('g:vscode')
 	"let g:material_terminal_italics = 1
 
 	"colorscheme settings
-	"let g:gruvbox_italic=1
-	"let g:gruvbox_contrast_dark='hard'
-  colorscheme lucid
+	let g:gruvbox_italic=1
+	let g:gruvbox_contrast_dark='medium'
+	let g:nord_cursor_line_number_background = 1
+	"let g:nord_bold_vertical_split_line = 1
+	"let g:nord_italic = 1
+	"let g:nord_underline = 1
+  colorscheme gruvbox
 	
 	"Setting the line HighLighting
-	hi clear CursorLine
-	augroup CLClear
-	    autocmd! ColorScheme * hi clear CursorLine
-	augroup END
 
 	"hi CursorLineNR cterm=bold ctermbg=15 ctermfg=8 gui=NONE guibg=#000000 guifg=#ff8000
 	"augroup CLNRSet
 	    "autocmd! ColorScheme * hi CursorLineNR cterm=bold ctermbg=15 ctermfg=8 gui=NONE guibg=#00000 guifg=#ff8000
 	"augroup END
 
-	"set cursorline
+	set cursorline
 
 	"Lightline
 	set laststatus=2
@@ -91,16 +92,9 @@ if !exists ('g:vscode')
 	"Keybindings
 	map <C-L> :<Esc>:tabnext<CR>
 	map <C-H> :<Esc>:tabp<CR>
-	map <C-p> :<Esc>:Files<CR>
+	map <C-p> :<Esc>:GFiles<CR>
+	map <C-m-p> :<Esc>:Files<CR>
 	map <C-b> :<Esc>:Buffers<CR>
-
-	" Nerdtree
-	autocmd StdinReadPre * let s:std_in=1
-
-	autocmd! BufNewFile,BufRead *.shader,*.hlsl set ft=hlsl
-	"let g:NERDTreeDirArrowExpandable = ''
-	let g:NERDTreeDirArrowCollapsible = ''
-
 
 	"The coc of vim 
 	" TextEdit might fail if hidden is not set.
@@ -122,7 +116,7 @@ if !exists ('g:vscode')
 
 	" Always show the signcolumn, otherwise it would shift the text each time
 	" diagnostics appear/become resolved.
-	"set signcolumn=yes
+	set signcolumn=yes
 
 	function! s:check_back_space() abort
 	  let col = col('.') - 1
@@ -212,20 +206,31 @@ if !exists ('g:vscode')
   endfunction
 
   let g:lightline = {
-      \ 'colorscheme': 'lucid',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ],
 			\							[ 'wolf' ]]
       \ },
 			\	'component': {
-			\		'wolf': '🦊🥃'
+			\		'wolf': '🦊🥃',
 			\	},
+			\ 'tabline' : {
+			\		'left': [['tabs']],
+			\		'right': [ [''] ]
+			\ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
       \   'currentfunction': 'CocCurrentFunction'
-      \ },
+      \		},
+			\ 'component_expand' : {
+			\		'buffers': 'lightline#bufferline#buffers'
+			\		},
+			\ 'component_type': {
+			\			'buffers': 'tabsel'
+			\		}
       \ }
+
 
 	" Mappings using CoCList:
 	" Show all diagnostics.
@@ -244,7 +249,9 @@ if !exists ('g:vscode')
 	nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 	" Resume latest coc list.
 	nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-  hi CocFloating ctermbg=0 
+  hi CocFlobting ctermbg=0 
+	nmap <space>e :CocCommand explorer<CR>
+	autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 	"Extra keymappings
 	nnoremap <M-j>    :resize -2<CR>
