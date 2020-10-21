@@ -23,6 +23,7 @@ if !exists ('g:vscode')
   Plug 'mhinz/vim-startify'
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'morhetz/gruvbox'
+	Plug 'unblevable/quick-scope'
 	Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
 
@@ -85,6 +86,9 @@ if !exists ('g:vscode')
 	"augroup END
 
 	set cursorline
+	"Quick scope settings
+	highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+	highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 
 	"Lightline
 	set laststatus=2
